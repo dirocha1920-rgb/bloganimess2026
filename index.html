@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radar Anime 2026</title>
+<meta name="description" content="Guia independente e informativo dos principais animes de 2026: o que já estreou e o que ainda vem. Dados conferidos em 22/10/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: revista de cultura pop em coluna única; régua das quatro temporadas japonesas como espinha do guia; cards tipográficos sem imagens. */
+:root{
+  --paper:#f5f6f4; --card:#ffffff; --ink:#15201f; --muted:#56635f; --line:#d6dddb;
+  --accent:#0d6a6e; --accent-soft:#e0eeed; --await:#8a5a10; --await-soft:#f6ecd9;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#111716; --card:#18201f; --ink:#e6ecea; --muted:#9caaa6; --line:#2c3735;
+  --accent:#5fc3c4; --accent-soft:#163231; --await:#e3b660; --await-soft:#33280f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#111716; --card:#18201f; --ink:#e6ecea; --muted:#9caaa6; --line:#2c3735;
+  --accent:#5fc3c4; --accent-soft:#163231; --await:#e3b660; --await-soft:#33280f; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--body);margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.prose{max-width:66ch}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-stretch:75%;font-weight:850;letter-spacing:-.01em}
+h3{font-size:1.45rem;font-stretch:80%;font-weight:800}
+.eyebrow{font:500 .75rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:20;background:var(--card);padding:8px}
+
+/* Cabeçalho */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:10px}
+.logo{font-family:var(--display);font-weight:900;font-stretch:70%;font-size:1.5rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--accent)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px 16px;flex-wrap:wrap}
+nav a{font:500 .85rem var(--body);color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+
+/* Abertura */
+.hero{padding-block:48px 28px}
+.hero h1{font-size:clamp(2.6rem,8vw,5.2rem);font-weight:900;font-stretch:66%;letter-spacing:-.015em;margin-top:12px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lede{font-size:1.15rem;color:var(--ink);margin:20px 0 0}
+.notice{margin-top:20px;border-left:3px solid var(--await);background:var(--await-soft);padding:10px 14px;font-size:.92rem;max-width:66ch}
+
+/* Régua das temporadas */
+.ruler{margin-top:36px}
+.ruler-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.ruler-track>div{padding:10px 8px 0 0;border-left:1px solid var(--line)}
+.ruler-track>div:first-child{border-left:0}
+.ruler-track b{display:block;font:800 1.05rem/1.1 var(--display);font-stretch:75%}
+.ruler-track small{display:block;font:400 .78rem/1.35 var(--mono);color:var(--muted);margin-top:4px}
+.today{position:absolute;top:-8px;left:80.8%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.today i{width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
+.today span{font:500 .7rem var(--mono);background:var(--accent);color:var(--paper);padding:1px 6px;margin-top:4px;white-space:nowrap}
+.ruler-track>div:last-child{padding-bottom:30px}
+
+/* Filtros */
+.filters{position:sticky;top:calc(env(safe-area-inset-top,0px) + 54px);z-index:8;background:var(--paper);border-block:1px solid var(--line);margin-top:36px}
+.filters .wrap{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-block:12px}
+.filters label.search{flex:1 1 220px;display:flex;min-width:0}
+.filters input{width:100%;font:400 .95rem var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:8px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 .8rem var(--body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media (max-width:720px){.filters{position:static}}
+.result-count{font:400 .8rem var(--mono);color:var(--muted)}
+
+/* Seções */
+section.block{padding-block:56px 8px;scroll-margin-top:130px}
+.block-head{display:grid;gap:10px;margin-bottom:24px}
+.season{margin-top:34px}
+.season-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:16px}
+.season-head h3{font-size:1.25rem}
+.season-head span{font:400 .78rem var(--mono);color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.date{font:500 .8rem/1.3 var(--mono);color:var(--muted)}
+.status{font:600 .72rem/1 var(--body);text-transform:uppercase;letter-spacing:.06em;padding:5px 8px;border-radius:3px;white-space:nowrap}
+.status.on{background:var(--accent-soft);color:var(--accent)}
+.status.done{background:var(--accent-soft);color:var(--accent)}
+.status.wait{background:var(--await-soft);color:var(--await)}
+.card h4{font:850 1.35rem/1.08 var(--display);font-stretch:78%;margin:0;text-wrap:balance}
+.card .alt{font-size:.82rem;color:var(--muted);margin-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font:400 .72rem var(--mono);border:1px solid var(--line);border-radius:3px;padding:2px 6px;color:var(--muted)}
+.card p{margin:0;font-size:.94rem}
+.why{font-size:.9rem;border-top:1px dashed var(--line);padding-top:10px}
+.why b{font-weight:600}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0;font-size:.85rem}
+dl.facts dt{color:var(--muted)}
+dl.facts dd{margin:0;min-width:0}
+.spoil{font-size:.78rem;color:var(--await)}
+.src{font-size:.78rem;color:var(--muted);margin-top:auto}
+.src a{word-break:break-word}
+.empty{color:var(--muted);font-style:italic}
+
+/* Expectativa */
+.polls{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.poll{border-top:2px solid var(--ink);padding-top:10px;min-width:0}
+.poll h4{font:800 1.05rem var(--display);font-stretch:80%;margin:0 0 4px}
+.poll .meta{font:400 .75rem/1.4 var(--mono);color:var(--muted)}
+.poll ol{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.poll li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:.88rem}
+.bar{grid-column:1/-1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.pct{font:500 .82rem var(--mono);font-variant-numeric:tabular-nums}
+.callout{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+
+/* Glossário e notas */
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;margin-top:16px}
+.gloss dt{font:600 .9rem var(--body)}
+.gloss dd{margin:2px 0 0;font-size:.88rem;color:var(--muted)}
+ol.sources{padding-left:1.4em;font-size:.86rem;display:grid;gap:6px}
+ol.sources a{word-break:break-word}
+
+footer{margin-top:64px;border-top:2px solid var(--ink);padding-block:32px 48px;font-size:.88rem}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+footer h5{font:800 1rem var(--display);font-stretch:80%;margin:0 0 6px}
+footer p{margin:0 0 8px;color:var(--muted)}
+footer .disclaimer{color:var(--ink);font-weight:500}
+.ph{font-family:var(--mono);background:var(--await-soft);color:var(--await);padding:0 4px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<a class="skip" href="#destaques">Pular para o conteúdo</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#topo">Radar<span>·</span>Anime 2026</a>
+    <nav aria-label="Seções">
+      <ul>
+        <li><a href="#destaques">Destaques</a></li>
+        <li><a href="#por-vir">Por vir</a></li>
+        <li><a href="#expectativa">Expectativa</a></li>
+        <li><a href="#criterios">Critérios</a></li>
+        <li><a href="#fontes">Fontes</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <div class="wrap hero">
+    <div class="eyebrow">Guia independente · atualizado em 22/10/2026</div>
+    <h1>O ano do anime em <em>quatro temporadas</em></h1>
+    <div class="prose">
+      <p class="lede">Uma seleção do que estreou em 2026 até agora e do que já foi anunciado para depois. Cada título traz data, gênero, onde assistir (quando confirmado) e o link da fonte consultada.</p>
+      <p class="notice"><strong>A programação pode mudar.</strong> Estúdios e plataformas adiam estreias e mudam catálogos por região. Diferenciamos <em>data confirmada</em>, <em>janela prevista</em> (só o mês ou a estação) e <em>sem data oficial</em>. Confira sempre na página oficial antes de se programar.</p>
+    </div>
+
+    <div class="ruler" aria-label="Temporadas de anime de 2026">
+      <div class="eyebrow" style="margin-bottom:10px">As temporadas seguem a TV japonesa</div>
+      <div class="ruler-track">
+        <div><b>Janeiro</b><small>inverno no Japão<br>jan–mar</small></div>
+        <div><b>Abril</b><small>primavera<br>abr–jun</small></div>
+        <div><b>Julho</b><small>verão<br>jul–set</small></div>
+        <div><b>Outubro</b><small>outono<br>out–dez</small></div>
+        <div class="today" aria-hidden="true"><i></i><span>hoje · 22/10</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filters" role="search">
+    <div class="wrap">
+      <label class="search" for="q"><span class="skip">Buscar título</span>
+        <input id="q" type="search" placeholder="Buscar título, estúdio ou plataforma" autocomplete="off">
+      </label>
+      <div class="chips" id="status-chips" aria-label="Filtrar por situação"></div>
+      <div class="chips" id="genre-chips" aria-label="Filtrar por gênero"></div>
+      <span class="result-count" id="count" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <section class="block wrap" id="destaques">
+    <div class="block-head">
+      <div class="eyebrow">Seleção editorial · lançados até 22/10/2026</div>
+      <h2>Destaques de 2026 até agora</h2>
+      <p class="prose" style="margin:0">Organizados pela temporada de estreia. Sinopses descrevem só a premissa; quando o título é continuação, avisamos que ele pressupõe as temporadas anteriores.</p>
+    </div>
+    <div id="released"></div>
+  </section>
+
+  <section class="block wrap" id="por-vir">
+    <div class="block-head">
+      <div class="eyebrow">Anunciados para depois de 22/10/2026</div>
+      <h2>O que ainda está por vir</h2>
+      <p class="prose" style="margin:0">Datas de estreia no Japão ou na plataforma indicada. Lançamento no Brasil, quando não citado, está <strong>a confirmar</strong>.</p>
+    </div>
+    <div class="grid" id="upcoming"></div>
+  </section>
+
+  <section class="block wrap" id="expectativa">
+    <div class="block-head">
+      <div class="eyebrow">Com base em pesquisas identificáveis</div>
+      <h2>O que o público está esperando</h2>
+      <div class="prose">
+        <p style="margin:0">O site Anime Corner faz, antes de cada temporada, uma votação aberta sobre os títulos mais aguardados. Os números abaixo são o percentual de votos de cada título, como publicado pelo site. São enquetes on-line com participação voluntária: mostram o interesse de quem votou, não do público em geral.</p>
+      </div>
+    </div>
+    <div class="polls" id="polls"></div>
+    <div class="callout prose">
+      <p style="margin:0 0 8px"><strong>Outra votação, outro resultado.</strong> Na enquete da comunidade Anime Trending para a temporada de abril, <em>Witch Hat Atelier</em> ficou em 1º lugar (32,88%), à frente de <em>Re:ZERO</em> (30,47%), a ordem inversa da Anime Corner. Por isso tratamos essas listas como indício de interesse, não como veredito. <a href="https://www.anitrendz.com/news/2026/03/31/list-the-most-anticipated-anime-of-spring-2026" target="_blank" rel="noopener">Fonte: Anime Trending</a>.</p>
+      <p style="margin:0"><strong>Para 2027:</strong> a parte 2 de <em>Demon Slayer: Castelo Infinito</em> segue sem data oficial. O interesse tem base concreta: a parte 1 arrecadou mais de US$ 793 milhões no mundo, segundo a <a href="https://www.cbr.com/demon-slayer-infinity-castle-part-2-2027-release-date/" target="_blank" rel="noopener">CBR</a>. Uma data de setembro de 2027 circula em reportagens, mas é especulação baseada em um filme sem título na agenda da Sony; a <a href="https://screenrant.com/demon-slayer-infinity-castle-part-2-release-date-not-2026/" target="_blank" rel="noopener">Screen Rant</a> registra que ufotable, Aniplex e Crunchyroll não anunciaram data.</p>
+    </div>
+  </section>
+
+  <section class="block wrap" id="criterios">
+    <div class="block-head">
+      <div class="eyebrow">Como escolhemos</div>
+      <h2>Critérios editoriais</h2>
+    </div>
+    <div class="prose">
+      <p>Os destaques são uma <strong>seleção editorial</strong>, não um ranking. Não há ordem de “melhores”. Consideramos quatro coisas: interesse do público medido em pesquisas públicas, relevância da obra ou da franquia, qualidade da história e da produção segundo veículos especializados, e variedade de gêneros. Muitos bons títulos de 2026 ficaram de fora só para a lista caber num guia rápido.</p>
+      <p>Regras que seguimos: só publicamos data com fonte; quando fontes divergem sobre plataforma ou data, escrevemos “a confirmar”; não usamos imagens de animes, pôsteres ou logos, apenas cards tipográficos próprios; e não temos parceria com estúdios ou serviços de streaming.</p>
+      <p>Não citamos avaliações de sites de notas, porque elas mudam semana a semana. Para títulos recém-lançados, como <em>Cyberpunk: Edgerunners 2</em>, ainda é cedo para falar em recepção.</p>
+    </div>
+    <dl class="gloss">
+      <div><dt>Cour</dt><dd>Bloco de exibição de cerca de três meses, em geral 11 a 13 episódios. “Split cour” é quando a temporada é dividida em duas partes com pausa.</dd></div>
+      <div><dt>Simulcast</dt><dd>Exibição no streaming no mesmo dia (ou quase) da TV japonesa, normalmente legendada.</dd></div>
+      <div><dt>JST</dt><dd>Horário do Japão, 12 horas à frente de Brasília. Uma estreia às 23h JST cai às 11h do mesmo dia no Brasil.</dd></div>
+      <div><dt>Janela prevista</dt><dd>Quando só o mês ou a estação foram anunciados, sem dia exato.</dd></div>
+    </dl>
+  </section>
+
+  <section class="block wrap" id="fontes">
+    <div class="block-head">
+      <div class="eyebrow">Todas consultadas em 22/10/2026</div>
+      <h2>Fontes e links úteis</h2>
+      <p class="prose" style="margin:0">Damos preferência a anúncios oficiais (plataformas, editoras, sites dos animes) e a veículos especializados. Páginas de enciclopédia aparecem só para dados de lançamento que elas mesmas referenciam.</p>
+    </div>
+    <ol class="sources" id="sources"></ol>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer" style="margin-bottom:24px">Este é um site independente e informativo, sem vínculo oficial com estúdios, editoras ou plataformas de streaming.</p>
+    <div class="cols">
+      <div id="sobre">
+        <h5>Sobre</h5>
+        <p>O Radar Anime 2026 é um guia gratuito para quem acompanha animes ou quer descobrir novos títulos. Não vendemos produtos, assinaturas ou serviços.</p>
+        <p>Responsável: Kira</p>
+      </div>
+      <div>
+        <h5>Navegação</h5>
+        <p><a href="#sobre">Sobre</a> · <a href="#criterios">Critérios editoriais</a> · <a href="#fontes">Fontes</a> · <a href="#contato">Contato</a> · <a href="#privacidade">Privacidade</a></p>
+        <p id="contato">Contato: <span class="mail">kiranimesonline@org.com</span><br>Encontrou um erro de data ou plataforma? Escreva com o link da fonte para corrigirmos.</p>
+      </div>
+      <div id="privacidade">
+        <h5>Privacidade</h5>
+        <p>Esta página não tem cadastro, formulário, comentários nem cookies próprios, e não usa ferramentas de análise ou publicidade. A busca e os filtros funcionam só no seu navegador; nada do que você digita é enviado ou guardado.</p>
+        <p>As fontes tipográficas são carregadas do Google Fonts, o que faz seu navegador se conectar aos servidores do Google, que recebem dados técnicos como o endereço IP. O serviço de hospedagem também pode registrar acessos conforme a política dele. Links externos levam a sites com políticas próprias. Para dúvidas ou pedidos com base na LGPD (Lei 13.709/2018), use o contato acima.</p>
+      </div>
+    </div>
+    <p style="margin-top:24px">Nomes de obras, personagens, estúdios, plataformas e marcas citados pertencem aos respectivos titulares e aparecem aqui apenas para fins informativos. Textos e layout: Kira, 2026.</p>
+  </div>
+</footer>
+
+<script>
+const SRC = {
+  jjk1:["Comics Beat – Jujutsu Kaisen 3ª temporada na Crunchyroll","https://www.comicsbeat.com/jujutsu-kaisen-season-3-set-for-january-2026-premiere-on-crunchyroll"],
+  jjk2:["AIPT – Jujutsu Kaisen estreia em 8/1/2026","https://aiptcomics.com/?p=656133"],
+  fri1:["Anime Trending – Frieren 2ª temporada em 16/1/2026","https://www.anitrendz.com/news/2025/09/26/frieren-beyond-journeys-end-season-2-will-begin-on-january-16-2026"],
+  fri2:["Anime Corner – Frieren 2ª temporada na Crunchyroll","https://animecorner.me/frieren-beyond-journeys-end-season-2-coming-to-crunchyroll-in-january-2026"],
+  oshi:["Fun! Japan – lista da temporada de inverno 2026","https://www.fun-japan.jp/en/articles/14341"],
+  sbr1:["What’s on Netflix – Steel Ball Run em 19/3/2026","https://www.whats-on-netflix.com/news/anime/jojos-bizarre-adventure-steel-ball-run-sets-march-2026-netlfix-release/"],
+  sbr2:["Wikipédia (en) – Steel Ball Run (anime)","https://en.wikipedia.org/wiki/Steel_Ball_Run:_JoJo's_Bizarre_Adventure"],
+  wha1:["Graphic Policy – Witch Hat Atelier estreia em 6/4/2026 na Crunchyroll","https://graphicpolicy.com/2026/02/26/get-a-first-look-at-the-witch-hat-atelier-anime-based-on-the-award-winning-manga-series"],
+  wha2:["Bubbleblabber – dublagens simultâneas, incluindo português do Brasil","https://www.bubbleblabber.com/?p=182325"],
+  wha3:["Dexerto (fr) – crítica de Witch Hat Atelier","https://www.dexerto.fr/anime/witch-hat-atelier-critique-1642611/"],
+  rez:["Siliconera – lineup da Crunchyroll para a primavera 2026","https://www.siliconera.com/crunchyroll-spring-2026-anime-includes-one-piece-witch-hat-atelier-marriagetoxin/"],
+  ble1:["VIZ Media – comunicado: estreia em 25/7 no Hulu e Disney+","https://www.viz.com/press-releases/v/1006765"],
+  ble2:["VIZ Media – onde assistir a parte 4 (legendas em português do Brasil)","https://www.viz.com/blog/posts/where-to-watch-bleach-thousand-year-blood-war-part-4"],
+  mus:["Outlook Respawn – lineup da Crunchyroll para o verão 2026","https://respawn.outlookindia.com/pop-culture/pop-culture-news/crunchyroll-summer-2026-anime-lineup-all-new-and-returning-series"],
+  musR:["Anime Corner – rankings semanais do verão 2026","https://animecorner.me/summer-2026-anime-rankings-week-1/"],
+  tan:["Anime Corner – mais aguardados do verão 2026","https://animecorner.me/summer-2026-most-anticipated-anime-rankings/"],
+  gits1:["Anime News Network – The Ghost in the Shell estreia em 7/7","https://www.animenewsnetwork.com/news/2026-05-10/the-ghost-in-the-shell-anime-reveals-july-7-debut-in-3rd-promo-video/.237199"],
+  gits2:["Wikipédia (en) – bloco Ka-Anival!! (Kansai TV)","https://en.wikipedia.org/wiki/Ka-Anival!!"],
+  apo1:["Anime News Network – Diários de uma Apotecária T3 em 2/10","https://www.animenewsnetwork.com/news/2026-08-15/the-apothecary-diaries-season-3-trailer-unveils-october-2-debut-more-cast-opening-song/.240600"],
+  apo2:["Critical Hits – dublados da Crunchyroll em outubro de 2026","https://criticalhits.com.br/anime/crunchyroll-anuncia-animes-dublados-da-temporada-de-outubro-de-2026/"],
+  bc:["AWN – lineup de outono da Crunchyroll","https://www.awn.com/news/crunchyroll-announces-massive-fall-2026-anime-lineup"],
+  bcBR:["Omelete – animes de outubro na Crunchyroll","https://www.omelete.com.br/mangas-animes/crunchyroll-animes-outubro-2026-lancamentos"],
+  dbs:["Siliconera – Dragon Ball Super: Beerus estreia em 11/10","https://www.siliconera.com/dragon-ball-super-beerus-anime-launch-date-set/"],
+  cyb1:["Netflix Tudum – Cyberpunk: Edgerunners 2 em 20/10","https://www.netflix.com/tudum/articles/cyberpunk-edgerunners-2-release-date-news"],
+  cyb2:["GamesRadar+ – horário e episódios de Edgerunners 2","https://www.gamesradar.com/entertainment/anime-shows/cyberpunk-edgerunners-season-2-release-date-time/"],
+  gro:["Wikipédia (en) – Grotesqqque","https://en.wikipedia.org/wiki/Grotesqqque"],
+  apoF:["Anime Corner – filme de Diários de uma Apotecária em 11/12","https://animecorner.me/?p=213995"],
+  sak:["About Netflix – Sakamoto Days T2 em janeiro de 2027","https://about.netflix.com/en/news/sakamoto-days-season-2-returns-january-2027"],
+  opm:["Anime Corner – One-Punch Man T3 parte 2 em janeiro de 2027","https://animecorner.me/one-punch-man-season-3-cour-2-visual-and-trailer-revealed-sets-january-2027-release/"],
+  top1:["Anime.com – The One Piece em fevereiro de 2027","https://www.anime.com/news/the-one-piece-wit-studio-netflix-february-2027"],
+  top2:["Wikipédia (en) – The One Piece","https://en.wikipedia.org/wiki/The_One_Piece"],
+  ds:["Screen Rant – Castelo Infinito parte 2 sem data","https://screenrant.com/demon-slayer-infinity-castle-part-2-release-date-not-2026/"],
+  pW:["Anime Corner – mais aguardados do inverno 2026","https://animecorner.me/winter-2026-most-anticipated-anime-rankings/"],
+  pS:["Anime Corner – mais aguardados da primavera 2026","https://animecorner.me/spring-2026-most-anticipated-anime-rankings/"],
+  pF:["Anime Corner – mais aguardados do outono 2026","https://animecorner.me/fall-2026-most-anticipated-anime-rankings/"]
+};
+
+const SEASONS = [
+  {id:"jan",name:"Temporada de janeiro",range:"jan–mar 2026"},
+  {id:"abr",name:"Temporada de abril",range:"abr–jun 2026"},
+  {id:"jul",name:"Temporada de julho",range:"jul–set 2026"},
+  {id:"out",name:"Temporada de outubro",range:"out–dez 2026 · em andamento"}
+];
+
+const RELEASED = [
+  {season:"jan",title:"Frieren e a Jornada para o Além – 2ª temporada",alt:"Sousou no Frieren · Frieren: Beyond Journey’s End",date:"16/01/2026 (Japão)",genres:["Fantasia","Drama"],studio:"Madhouse",platform:"Crunchyroll (mundo, exceto Ásia)",sequel:true,
+   syn:"A elfa maga Frieren, que vive muito mais que os humanos, segue viagem com os jovens Fern e Stark, aprendendo aos poucos o valor do tempo que passa com as pessoas.",
+   why:"Foi o título mais votado entre os aguardados de janeiro na enquete da Anime Corner (8,62%). A nova temporada tem direção de Tomoya Kitagawa, que trabalhou na primeira.",src:["fri1","fri2","pW"]},
+  {season:"jan",title:"Jujutsu Kaisen – 3ª temporada, parte 1",alt:"Arco The Culling Game",date:"08/01/2026",genres:["Ação","Sobrenatural"],studio:"MAPPA",platform:"Crunchyroll (exclusivo fora da Ásia)",sequel:true,
+   syn:"Feiticeiros jujutsu combatem maldições nascidas de emoções negativas. A nova temporada abre um arco em que vários usuários de energia amaldiçoada são postos uns contra os outros.",
+   why:"Segunda colocada entre as mais aguardadas de janeiro (5,95%) na Anime Corner. Direção de Shota Goshozono, que já comandou a segunda temporada.",src:["jjk1","jjk2","pW"]},
+  {season:"jan",title:"[Oshi no Ko] – 3ª temporada",alt:"Oshi no Ko",date:"14/01/2026 (Japão)",genres:["Drama","Mistério"],studio:null,platform:null,sequel:true,
+   syn:"Uma história sobre os bastidores do entretenimento japonês, de idols a elencos de TV, que mistura crítica à indústria com uma trama de suspense.",
+   why:"Terceira mais aguardada de janeiro na Anime Corner (5,84%), quase empatada com Jujutsu Kaisen.",src:["oshi","pW"]},
+  {season:"jan",title:"Steel Ball Run: JoJo’s Bizarre Adventure",alt:"Parte 7 de JoJo",date:"19/03/2026 (1º episódio, 47 min)",genres:["Aventura","Ação"],studio:"David Production",platform:"Netflix (mundial)",sequel:false,status:"on",statusText:"Em exibição",
+   syn:"Em 1890, o ex-jóquei Johnny Joestar, paraplégico, segue o misterioso Gyro Zeppeli numa corrida a cavalo que atravessa os Estados Unidos.",
+   why:"A parte 7 se passa em continuidade própria, então funciona como porta de entrada para quem nunca viu JoJo. Depois do episódio de estreia, novos episódios voltaram semanalmente em 25/09.",src:["sbr1","sbr2"]},
+
+  {season:"abr",title:"Witch Hat Atelier",alt:"Tongari Boushi no Atelier",date:"06/04/2026",genres:["Fantasia","Aventura"],studio:"BUG FILMS",platform:"Crunchyroll, com dublagem em português do Brasil anunciada para o mesmo dia",sequel:false,
+   syn:"Coco é uma menina sem dons mágicos num mundo onde a magia é um segredo bem guardado. Um encontro com o mago viajante Qifrey muda o rumo da vida dela.",
+   why:"Adapta o mangá de Kamome Shirahama, vencedor dos prêmios Eisner e Harvey. Liderou a enquete da Anime Trending e foi 2ª na Anime Corner. A crítica da Dexerto francesa elogiou animação, cenários e ritmo.",src:["wha1","wha2","wha3","pS"]},
+  {season:"abr",title:"Re:ZERO – Começando a Vida em Outro Mundo – 4ª temporada",alt:"Re:ZERO -Starting Life in Another World-",date:"08/04/2026",genres:["Fantasia","Mistério"],studio:null,platform:"Crunchyroll",sequel:true,
+   syn:"Subaru Natsuki foi levado a outro mundo e descobriu que, ao morrer, volta a um ponto anterior do tempo. Ele usa isso para tentar salvar quem ama, a um custo pessoal alto.",
+   why:"Liderou com folga a enquete de mais aguardados de abril da Anime Corner (10,56%, entre mais de 11 mil votos).",src:["rez","pS"]},
+
+  {season:"jul",title:"Bleach: Thousand-Year Blood War – The Calamity",alt:"Parte 4 e final da Guerra Sangrenta dos Mil Anos",date:"25/07/2026",genres:["Ação","Sobrenatural"],studio:"Pierrot Films",platform:"Disney+ (fora dos EUA), com legendas em português do Brasil",sequel:true,
+   syn:"A parte final da adaptação do último arco do mangá de Tite Kubo, com o confronto decisivo entre Shinigamis e Quincys.",
+   why:"Fecha a história iniciada no anime em 2004. Ficou em 3º entre os aguardados de julho na Anime Corner (5,07%).",spoilerNote:"Por ser a parte final, qualquer resumo detalhado revela as partes anteriores. Mantivemos só o contexto geral.",src:["ble1","ble2","tan"]},
+  {season:"jul",title:"Mushoku Tensei: Uma Segunda Chance – 3ª temporada",alt:"Mushoku Tensei: Jobless Reincarnation",date:"Julho de 2026",genres:["Fantasia","Drama"],studio:null,platform:"Crunchyroll",sequel:true,
+   syn:"Um homem que desperdiçou a vida renasce num mundo de magia como Rudeus e tenta, desta vez, viver sem repetir os mesmos erros.",
+   why:"2º lugar entre os aguardados de julho (5,53%) e líder das votações semanais da Anime Corner durante boa parte da temporada.",src:["mus","tan","musR"]},
+  {season:"jul",title:"Saga of Tanya the Evil – 2ª temporada",alt:"Youjo Senki II",date:"Julho de 2026",genres:["Ação","Fantasia"],studio:null,platform:null,sequel:true,
+   syn:"Uma oficial militar fria e calculista renasce num mundo em guerra parecido com a Europa do começo do século 20 e tenta sobreviver e subir na carreira.",
+   why:"Título mais votado entre os aguardados de julho na Anime Corner (6,55%), após anos de espera pela continuação da série de TV.",src:["tan"]},
+  {season:"jul",title:"The Ghost in the Shell (2026)",alt:"Koukaku Kidoutai",date:"07/07/2026 (Japão)",genres:["Ficção científica","Mistério"],studio:"Science SARU",platform:null,sequel:false,
+   syn:"Nova adaptação do mangá de Masamune Shirow: a Major Motoko Kusanagi e sua equipe investigam crimes num futuro em que corpos e mentes se conectam à rede.",
+   why:"Recomeço de uma das franquias de ficção científica mais influentes do anime, agora pelo estúdio de Dandadan. Teve 10 episódios no bloco Ka-Anival!! da Kansai TV.",platformNote:"Fontes divergem sobre a plataforma internacional; no Brasil, a confirmar.",src:["gits1","gits2"]},
+
+  {season:"out",title:"Diários de uma Apotecária – 3ª temporada (parte 1)",alt:"Kusuriya no Hitorigoto · The Apothecary Diaries",date:"02/10/2026",genres:["Mistério","Drama"],studio:"OLM",platform:"Crunchyroll, com dublagem anunciada (data da versão dublada a confirmar)",sequel:true,status:"on",statusText:"Em exibição",
+   syn:"Maomao, uma jovem boticária com olho clínico para venenos e remédios, resolve mistérios dentro da corte imperial enquanto tenta passar despercebida.",
+   why:"2º lugar entre os aguardados de outubro na Anime Corner (15,16%). A temporada é dividida: a segunda parte está prevista para abril de 2027.",src:["apo1","apo2","pF"]},
+  {season:"out",title:"Black Clover – 2ª temporada",alt:"",date:"03/10/2026",genres:["Ação","Fantasia"],studio:"Pierrot",platform:"Crunchyroll, com dublagem anunciada",sequel:true,status:"on",statusText:"Em exibição",
+   syn:"Asta nasceu sem magia num reino onde todos a têm, mas não abre mão do sonho de se tornar o Rei Mago.",
+   why:"Volta depois de cerca de cinco anos de pausa. Foi o 4º mais aguardado de outubro na Anime Corner (5,47%).",src:["bc","bcBR","pF"]},
+  {season:"out",title:"Dragon Ball Super: Beerus",alt:"",date:"11/10/2026 (Japão)",genres:["Ação","Comédia"],studio:"Toei Animation",platform:null,sequel:false,status:"on",statusText:"Em exibição",
+   syn:"Nova versão, com animação refeita, do início de Dragon Ball Super: o Deus da Destruição Beerus acorda e sai à procura de um saiyajin poderoso.",
+   why:"Marca a volta de Dragon Ball à TV japonesa em uma série semanal. Ficou em 8º na enquete de outubro da Anime Corner (3,09%).",platformNote:"Fontes internacionais citam plataformas diferentes por país; no Brasil, a confirmar.",src:["dbs","pF"]},
+  {season:"out",title:"Cyberpunk: Edgerunners 2",alt:"",date:"20/10/2026 (10 episódios de uma vez)",genres:["Ficção científica","Ação"],studio:"Studio Trigger, com CD Projekt Red",platform:"Netflix (mundial)",sequel:false,status:"done",statusText:"Completo",
+   syn:"Uma história independente em Night City, com um novo grupo de mercenários e elenco totalmente novo. Dá para assistir sem ter visto a primeira série.",
+   why:"Foi o título mais votado entre os aguardados de outubro na Anime Corner (16,42%). Saiu há dois dias, então ainda é cedo para falar em recepção.",src:["cyb1","cyb2","pF"]}
+];
+
+const UPCOMING = [
+  {title:"Grotesqqque",alt:"Filme antológico original",kind:"date",when:"06/11/2026",whereNote:"Cinemas do Japão. Brasil: sem data.",genres:["Terror"],studio:"CloverWorks",
+   syn:"Longa em formato de antologia, escrito e dirigido por Atsushi Nishigori. Antes, passou em festivais no exterior.",src:["gro"]},
+  {title:"Diários de uma Apotecária – filme original",alt:"The Deceased Empress’ Treasure (título provisório em inglês)",kind:"date",when:"11/12/2026",whereNote:"Cinemas do Japão. Brasil: sem data.",genres:["Mistério","Drama"],studio:null,
+   syn:"Filme com história original da autora Natsu Hyuuga, lançado no intervalo entre as duas partes da 3ª temporada.",src:["apoF"]},
+  {title:"Sakamoto Days – 2ª temporada",alt:"",kind:"window",when:"Janeiro de 2027",whereNote:"Netflix. Dia exato a confirmar.",genres:["Ação","Comédia"],studio:"TMS Entertainment",
+   syn:"Um lendário matador aposentado, hoje dono de loja de conveniência e pai de família, é puxado de volta ao submundo para proteger quem ama.",src:["sak"]},
+  {title:"One-Punch Man – 3ª temporada, parte 2",alt:"",kind:"window",when:"Janeiro de 2027",whereNote:"Plataforma no Brasil a confirmar.",genres:["Ação","Comédia"],studio:"J.C.STAFF",
+   syn:"Saitama vence qualquer inimigo com um soco e, por isso, vive entediado. A parte 2 continua o conflito entre a Associação de Heróis e a Associação de Monstros.",src:["opm"]},
+  {title:"The One Piece",alt:"Nova adaptação do mangá desde o começo",kind:"window",when:"Fevereiro de 2027",whereNote:"Netflix. Primeira temporada com 7 episódios.",genres:["Aventura","Ação"],studio:"WIT Studio",
+   syn:"Recomeça a história de Luffy pela saga East Blue, com produção nova e separada do anime da Toei, que segue no ar.",src:["top1","top2"]},
+  {title:"Diários de uma Apotecária – 3ª temporada (parte 2)",alt:"",kind:"window",when:"Abril de 2027",whereNote:"Continuação do split cour; plataforma deve seguir a da parte 1.",genres:["Mistério","Drama"],studio:"OLM",
+   syn:"Segunda metade da temporada que estreou em 2 de outubro.",src:["apo1"]},
+  {title:"Demon Slayer: Castelo Infinito – parte 2",alt:"Kimetsu no Yaiba, filme",kind:"none",when:"Sem data oficial",whereNote:"Em produção. Datas de 2027 que circulam são especulação.",genres:["Ação","Sobrenatural"],studio:"ufotable",
+   syn:"Segundo filme da trilogia que adapta o arco do Castelo Infinito, depois do recorde de bilheteria da parte 1.",src:["ds"]}
+];
+
+const POLLS = [
+  {name:"Janeiro 2026",meta:"mais de 5 mil votos · dez/2025",src:"pW",rows:[["Frieren 2ª temp.",8.62],["Jujutsu Kaisen: Culling Game pt.1",5.95],["Oshi no Ko 3ª temp.",5.84]]},
+  {name:"Abril 2026",meta:"mais de 11 mil votos · mar/2026",src:"pS",rows:[["Re:ZERO 4ª temp.",10.56],["Witch Hat Atelier",7.34],["Classroom of the Elite IV",4.51]]},
+  {name:"Julho 2026",meta:"“milhares de votos” · jun/2026",src:"tan",rows:[["Saga of Tanya the Evil II",6.55],["Mushoku Tensei 3ª temp.",5.53],["Bleach TYBW: The Calamity",5.07]]},
+  {name:"Outubro 2026",meta:"publicado em set/2026",src:"pF",rows:[["Cyberpunk: Edgerunners 2",16.42],["Diários de uma Apotecária 3",15.16],["Blue Box 2ª temp.",6.29]]}
+];
+
+const STATUS = [["all","Todos"],["lancado","Já lançado"],["aguardado","Aguardado"]];
+let state = {q:"", status:"all", genre:null};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const srcLinks = ids => ids.map(id => `<a href="${SRC[id][1]}" target="_blank" rel="noopener">${esc(SRC[id][0])}</a>`).join(" · ");
+const allGenres = [...new Set([...RELEASED,...UPCOMING].flatMap(x=>x.genres))].sort((a,b)=>a.localeCompare(b,"pt"));
+
+function matches(item){
+  const hay = [item.title,item.alt,item.studio,item.platform,item.whereNote,...item.genres].filter(Boolean).join(" ").toLowerCase();
+  if (state.q && !hay.includes(state.q)) return false;
+  if (state.genre && !item.genres.includes(state.genre)) return false;
+  return true;
+}
+
+function releasedCard(a){
+  const st = a.status || "done";
+  const stText = a.statusText || "Exibido";
+  const facts = [
+    ["Estreia", a.date],
+    ["Estúdio", a.studio || "—"],
+    ["Onde ver", a.platform || "A confirmar no Brasil"]
+  ];
+  return `<article class="card">
+    <div class="card-top"><span class="date">${esc(a.date)}</span><span class="status ${st}">${stText}</span></div>
+    <div><h4>${esc(a.title)}</h4>${a.alt?`<div class="alt">${esc(a.alt)}</div>`:""}</div>
+    <div class="tags">${a.genres.map(g=>`<span class="tag">${esc(g)}</span>`).join("")}</div>
+    <p>${esc(a.syn)}</p>
+    ${a.sequel?`<div class="spoil">Continuação: sem spoilers aqui, mas a temporada pressupõe as anteriores.</div>`:""}
+    ${a.spoilerNote?`<div class="spoil">${esc(a.spoilerNote)}</div>`:""}
+    <p class="why"><b>Por que pode interessar:</b> ${esc(a.why)}</p>
+    <dl class="facts">${facts.slice(1).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+    ${a.platformNote?`<div class="spoil">${esc(a.platformNote)}</div>`:""}
+    <div class="src">Fontes: ${srcLinks(a.src)}</div>
+  </article>`;
+}
+function upcomingCard(u){
+  const label = {date:"Data confirmada",window:"Janela prevista",none:"Sem data oficial"}[u.kind];
+  return `<article class="card">
+    <div class="card-top"><span class="date">${esc(u.when)}</span><span class="status wait">${label}</span></div>
+    <div><h4>${esc(u.title)}</h4>${u.alt?`<div class="alt">${esc(u.alt)}</div>`:""}</div>
+    <div class="tags">${u.genres.map(g=>`<span class="tag">${esc(g)}</span>`).join("")}</div>
+    <p>${esc(u.syn)}</p>
+    <dl class="facts"><dt>Estúdio</dt><dd>${esc(u.studio||"—")}</dd><dt>Onde</dt><dd>${esc(u.whereNote)}</dd></dl>
+    <div class="src">Fontes: ${srcLinks(u.src)}</div>
+  </article>`;
+}
+
+function render(){
+  const showR = state.status !== "aguardado", showU = state.status !== "lancado";
+  const rel = RELEASED.filter(matches), up = UPCOMING.filter(matches);
+  const relEl = document.getElementById("released");
+  document.getElementById("destaques").hidden = !showR;
+  document.getElementById("por-vir").hidden = !showU;
+  relEl.innerHTML = SEASONS.map(s=>{
+    const items = rel.filter(a=>a.season===s.id);
+    if(!items.length) return "";
+    return `<div class="season"><div class="season-head"><h3>${s.name}</h3><span>${s.range}</span></div><div class="grid">${items.map(releasedCard).join("")}</div></div>`;
+  }).join("") || `<p class="empty">Nenhum título lançado corresponde ao filtro.</p>`;
+  document.getElementById("upcoming").innerHTML = up.map(upcomingCard).join("") || `<p class="empty">Nenhum título aguardado corresponde ao filtro.</p>`;
+  const n = (showR?rel.length:0)+(showU?up.length:0);
+  document.getElementById("count").textContent = `${n} ${n===1?"título":"títulos"}`;
+}
+
+function chips(){
+  document.getElementById("status-chips").innerHTML = STATUS.map(([k,l])=>`<button class="chip" type="button" data-status="${k}" aria-pressed="${state.status===k}">${l}</button>`).join("");
+  document.getElementById("genre-chips").innerHTML = allGenres.map(g=>`<button class="chip" type="button" data-genre="${esc(g)}" aria-pressed="${state.genre===g}">${esc(g)}</button>`).join("");
+}
+document.addEventListener("click",e=>{
+  const b = e.target.closest("button.chip"); if(!b) return;
+  if(b.dataset.status) state.status = b.dataset.status;
+  if(b.dataset.genre) state.genre = state.genre===b.dataset.genre ? null : b.dataset.genre;
+  chips(); render();
+});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render();});
+
+document.getElementById("polls").innerHTML = POLLS.map(p=>{
+  const max = Math.max(...p.rows.map(r=>r[1]));
+  return `<div class="poll"><h4>Mais aguardados · ${p.name}</h4><div class="meta">${esc(p.meta)} · <a href="${SRC[p.src][1]}" target="_blank" rel="noopener">fonte</a></div>
+  <ol>${p.rows.map((r,i)=>`<li><span>${i+1}º ${esc(r[0])}</span><span class="pct">${r[1].toFixed(2).replace(".",",")}%</span><span class="bar"><i style="width:${(r[1]/max*100).toFixed(1)}%"></i></span></li>`).join("")}</ol></div>`;
+}).join("");
+
+const usedOrder = [];
+[...RELEASED,...UPCOMING].forEach(x=>x.src.forEach(id=>{ if(!usedOrder.includes(id)) usedOrder.push(id); }));
+["pW","pS","tan","pF"].forEach(id=>{ if(!usedOrder.includes(id)) usedOrder.push(id); });
+document.getElementById("sources").innerHTML =
+  usedOrder.map(id=>`<li><a href="${SRC[id][1]}" target="_blank" rel="noopener">${esc(SRC[id][0])}</a> — consultado em 22/10/2026</li>`).join("") +
+  `<li><a href="https://www.anitrendz.com/news/2026/03/31/list-the-most-anticipated-anime-of-spring-2026" target="_blank" rel="noopener">Anime Trending – mais aguardados da primavera 2026</a> — consultado em 22/10/2026</li>
+   <li><a href="https://www.cbr.com/demon-slayer-infinity-castle-part-2-2027-release-date/" target="_blank" rel="noopener">CBR – bilheteria de Castelo Infinito e especulação sobre a parte 2</a> — consultado em 22/10/2026</li>
+   <li>Páginas oficiais úteis: <a href="https://www.crunchyroll.com/pt-br/news" target="_blank" rel="noopener">Crunchyroll News (pt-BR)</a> · <a href="https://www.netflix.com/tudum" target="_blank" rel="noopener">Netflix Tudum</a> · <a href="https://www.viz.com/" target="_blank" rel="noopener">VIZ Media</a> · <a href="https://www.animenewsnetwork.com/" target="_blank" rel="noopener">Anime News Network</a></li>`;
+
+chips(); render();
+</script>
+</body>
+</html>
